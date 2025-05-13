@@ -8,7 +8,8 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Привет! Это бот с ежедневными цитатами!")
+    user_name = update.message.from_user.first_name
+    await update.message.reply_text(f"Привет, {user_name}! Я бот, который поможет тебе найти вдохновение. Напиши /quote, чтобы получить цитату дня!")
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
